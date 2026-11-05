@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.ipynb_checkpoints/
+data/ml-100k/
+data/*.zip
+.DS_Store
+.vscode/
+.idea/
