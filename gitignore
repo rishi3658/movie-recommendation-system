@@ -1,0 +1,85 @@
+# Movie Recommendation System
+
+A minor Data Science project that builds a movie recommender on the **MovieLens 100K** dataset using three approaches:
+
+| Approach | Idea | Implementation |
+|---|---|---|
+| Content-Based | Recommend movies with similar attributes (genres) | Cosine similarity on genre vectors (scikit-learn) |
+| Collaborative Filtering | Recommend movies liked by similar users | SVD matrix factorization (Surprise) |
+| Hybrid | Combine both scores | Weighted blend of the two |
+
+## Project Steps
+
+1. Define recommendation type (content-based / collaborative / hybrid)
+2. Collect movie ratings and metadata
+3. Preprocess data (missing values, normalization)
+4. Exploratory data analysis on user-item interactions
+5. Model user behavior using similarity measures
+6. Build the recommendation engine
+7. Generate personalized recommendations
+8. Evaluate using accuracy metrics (RMSE, MAE)
+9. Optimize for scalability
+10. Document design and limitations
+
+## Dataset
+
+- **Name:** MovieLens 100K
+- **Source:** GroupLens Research
+- **Location:** Kaggle
+- **Link:** https://www.kaggle.com/datasets/grouplens/movielens-100k-dataset
+
+Download it, unzip, and place the folder so that these files exist:
+
+```
+data/ml-100k/u.data
+data/ml-100k/u.item
+```
+
+## Tools
+
+Python, Pandas, NumPy, Scikit-learn, Surprise library
+
+## Setup
+
+```bash
+python -m venv venv
+# Windows: venv\Scripts\activate     Mac/Linux: source venv/bin/activate
+pip install -r requirements.txt
+```
+
+> If `scikit-surprise` fails to install on Windows, install Microsoft C++ Build Tools or use `conda install -c conda-forge scikit-surprise`.
+
+## Usage
+
+```bash
+python recommender.py --user 196 --top 10     # recommendations for user 196
+python recommender.py --evaluate              # RMSE / MAE on a hold-out set
+python recommender.py --explore               # dataset summary
+```
+
+## Project Structure
+
+```
+movie-recommendation-system/
+├── data/ml-100k/        # dataset (not committed)
+├── recommender.py       # main code
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+## Limitations
+
+- Cold start: new users/movies have no history.
+- Content-based part only uses genres (no plot, cast, or tags).
+- MovieLens 100K is small; real systems need approximate nearest neighbors or ALS (see `implicit`) to scale.
+
+## References
+
+- Surprise: https://github.com/NicolasHug/Surprise
+- Implicit (collaborative filtering at scale): https://github.com/benfred/implicit
+- GroupLens: https://grouplens.org/datasets/movielens/
+
+## License
+
+MIT
